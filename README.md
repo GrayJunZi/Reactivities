@@ -67,22 +67,35 @@ npm install axios
 npm install semantic-ui-react semantic-ui-css
 ```
 
+## 干净架构
+
+[The Clean Architecture](http://blog.cleancoder.com/uncle-bob/images/2012-08-13-the-clean-architecture/CleanArchitecture.jpg)
+
+
+
+
 
 ## 学习阶段
 
-### 第一部分
+### 第一部分（后端）
 
-- 干净架构 (Clean architecture)
+- 干净架构入门 (Clean architecture)
 - dotnet CLI
 - EF Core
 - 种子数据 (Seeding Data)
 - 数据库迁移 (Code first migrations)
 - Git仓库 (Git for source control)
 
-### 第二部分
+### 第二部分（前端）
 
 - 创建React应用 (create-react-app)
 - React 开发工具 (React Dev tools)
 - Typescript
 - Axios
 - Semantic-ui
+
+### 第三部分（后端）
+
+- 干净架构模式 (Clean architecture pattern)
+- 命令与查询分离 + 中介者模式 (CQRS + Mediator Pattern)
+- 增删改查 (CRUD)
