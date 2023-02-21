@@ -50,6 +50,21 @@ git remote add origin https://github.com/GrayJunZi/Reactivities.git
 
 # 推送至远程仓库
 git push -u origin master
+
+# 重置到某次commit
+git reset --hard commit_id
+
+# 强制推送到远程仓库
+git push origin HEAD --force
+
+# 创建本地分支
+git branch -b branch_name
+
+# 删除本地分支
+git branch -d branch_name
+
+# 删除远程分支
+git push origin -d branch_name
 ```
 
 ## 创建前端项目
@@ -65,6 +80,10 @@ npm install axios
 
 # 安装 semantic ui
 npm install semantic-ui-react semantic-ui-css
+
+# 安装 uuid
+npm install uuid
+npm i --save-dev @types/uuid
 ```
 
 ## 干净架构
@@ -90,7 +109,7 @@ npm install semantic-ui-react semantic-ui-css
 
 - 创建React应用 (create-react-app)
 - React 开发工具 (React Dev tools)
-- Typescript
+- TypeScript
 - Axios
 - Semantic-ui
 
@@ -99,3 +118,10 @@ npm install semantic-ui-react semantic-ui-css
 - 干净架构模式 (Clean architecture pattern)
 - 命令与查询分离 + 中介者模式 (CQRS + Mediator Pattern)
 - 增删改查 (CRUD)
+
+### 第四部分（前端）
+
+- TypeScript 接口
+- Semantic UI 组件
+- React 表单
+- CRUD 操作
