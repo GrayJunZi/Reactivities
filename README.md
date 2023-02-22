@@ -26,8 +26,6 @@ dotnet tool update --global dotnet-ef --version 7.0.3
 # 迁移数据库
 # API 项目需要先依赖 Microsoft.EntityFrameworkCore.Design 类库
 dotnet ef migrations add InitialCreate -p Persistence -s API
-
-dotnet ef 
 ```
 
 ### 安装 git
@@ -84,6 +82,9 @@ npm install semantic-ui-react semantic-ui-css
 # 安装 uuid
 npm install uuid
 npm i --save-dev @types/uuid
+
+# 安装 MobX
+npm install mobx mobx-react-list
 ```
 
 ## 干净架构
@@ -127,3 +128,9 @@ npm i --save-dev @types/uuid
 
 - axios 封装
 - axios 拦截器
+
+### 第六部分（前端）
+
+- 状态管理
+- MobX
+- React Context
