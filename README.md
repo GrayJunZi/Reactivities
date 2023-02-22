@@ -91,9 +91,6 @@ npm i --save-dev @types/uuid
 [The Clean Architecture](http://blog.cleancoder.com/uncle-bob/images/2012-08-13-the-clean-architecture/CleanArchitecture.jpg)
 
 
-
-
-
 ## 学习阶段
 
 ### 第一部分（后端）
@@ -125,3 +122,8 @@ npm i --save-dev @types/uuid
 - Semantic UI 组件
 - React 表单
 - CRUD 操作
+
+### 第五部分（前端）
+
+- axios 封装
+- axios 拦截器
