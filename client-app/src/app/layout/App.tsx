@@ -1,28 +1,25 @@
 import { Container } from 'semantic-ui-react';
 import NavBar from './NavBar';
 import ActivityDashboard from '../../features/activities/dashboard/ActivityDashboard';
-import { useEffect } from 'react';
-import LoadingConponent from './LoadingComponent';
-import { useStore } from '../stores/store';
 import { observer } from 'mobx-react-lite';
+import HomePage from '../../features/home/HomePage';
+import ActivityForm from '../../features/activities/form/ActivityForm';
+import { Route, Routes, useLocation } from 'react-router-dom';
+import ActivityDetail from '../../features/activities/details/ActivityDetail';
 
 function App() {
-  const { activityStore } = useStore();
-
-  useEffect(() => {
-    activityStore.loadActivities();
-  }, [activityStore]);
-
-  // 加载中
-  if (activityStore.loadingInitial) {
-    return <LoadingConponent content='Loading app' />;
-  }
-
+  const location = useLocation();
   return (
     <>
       <NavBar />
       <Container style={{ marginTop: '7em' }}>
-        <ActivityDashboard />
+        <Routes>
+          <Route path='/' element={<HomePage />} />
+          <Route path='/activities' element={<ActivityDashboard />} />
+          <Route path='/activities/:id' element={<ActivityDetail />} />
+          <Route key={location.key} path='/createActivity' element={<ActivityForm />} />
+          <Route key={location.key} path='/manage/:id' element={<ActivityForm />} />
+        </Routes>
       </Container>
     </>
   );

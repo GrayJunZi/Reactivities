@@ -85,6 +85,10 @@ npm i --save-dev @types/uuid
 
 # 安装 MobX
 npm install mobx mobx-react-list
+
+# 安装路由
+npm install react-router-dom
+npm install @types/react-router-dom --save-dev
 ```
 
 ## 干净架构
@@ -134,3 +138,7 @@ npm install mobx mobx-react-list
 - 状态管理
 - MobX
 - React Context
+
+### 第七部分（前端）
+
+- 路由

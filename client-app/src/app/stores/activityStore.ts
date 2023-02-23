@@ -1,14 +1,13 @@
 import { makeAutoObservable } from "mobx";
 import agent from "../api/agent";
 import { Activity } from "../models/activity";
-import { v4 as uuid } from 'uuid';
 
 export default class ActivityStore {
     activityRegistry = new Map<string, Activity>();
     selectedActivity: Activity | undefined = undefined;
     editMode = false;
     loading = false;
-    loadingInitial = true;
+    loadingInitial = false;
 
     constructor() {
         makeAutoObservable(this);
@@ -23,8 +22,7 @@ export default class ActivityStore {
         try {
             const activities = await agent.Activities.list();
             activities.forEach(activity => {
-                activity.date = activity.date.split('T')[0];
-                this.activityRegistry.set(activity.id, activity);
+                this.setActivity(activity);
             });
         } catch (error) {
 
@@ -32,6 +30,30 @@ export default class ActivityStore {
         this.setLoadingInitial(false);
     };
 
+    loadActivity = async (id: string) => {
+        let activity = this.getActivity(id);
+        if (!activity) {
+            this.setLoadingInitial(true);
+            try {
+                activity = await agent.Activities.detail(id);
+                this.setActivity(activity);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        this.selectedActivity = activity;
+        this.setLoadingInitial(false);
+        return activity;
+    };
+
+    private getActivity = (id: string) => {
+        return this.activityRegistry.get(id);
+    };
+
+    private setActivity = (activity: Activity) => {
+        activity.date = activity.date.split('T')[0];
+        this.activityRegistry.set(activity.id, activity);
+    };
 
     setLoadingInitial = (state: boolean) => {
         this.loadingInitial = state;
@@ -56,7 +78,6 @@ export default class ActivityStore {
 
     createActivity = async (activity: Activity) => {
         this.loading = true;
-        activity.id = uuid();
         try {
             await agent.Activities.create(activity);
             this.activityRegistry.set(activity.id, activity);
@@ -86,8 +107,6 @@ export default class ActivityStore {
         try {
             await agent.Activities.delete(id);
             this.activityRegistry.delete(id);
-            if (this.selectedActivity?.id === id)
-                this.cancelSeletedActivity();
         } catch (error) {
             console.log(error);
         }
