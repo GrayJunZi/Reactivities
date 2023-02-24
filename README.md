@@ -89,6 +89,10 @@ npm install mobx mobx-react-list
 # 安装路由
 npm install react-router-dom
 npm install @types/react-router-dom --save-dev
+
+# 安装日历
+npm install react-calendar
+npm install @types/react-calendar
 ```
 
 ## 干净架构
@@ -142,3 +146,7 @@ npm install @types/react-router-dom --save-dev
 ### 第七部分（前端）
 
 - 路由
+
+### 第八部分（前端）
+
+- 调整UI界面
