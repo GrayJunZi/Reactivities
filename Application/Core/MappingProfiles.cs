@@ -1,5 +1,4 @@
-﻿
-using AutoMapper;
+﻿using AutoMapper;
 using Domain;
 using System;
 using System.Collections.Generic;

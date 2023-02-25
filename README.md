@@ -93,6 +93,9 @@ npm install @types/react-router-dom --save-dev
 # 安装日历
 npm install react-calendar
 npm install @types/react-calendar
+
+# 安装 toastify
+npm install react-toastify
 ```
 
 ## 干净架构
@@ -150,3 +153,12 @@ npm install @types/react-calendar
 ### 第八部分（前端）
 
 - 调整UI界面
+
+### 第九部分（后端/前端）
+
+- 验证
+- 处理 HTTP 错误响应
+- 处理异常
+- 自定义中间件
+
+- Axios 拦截器
