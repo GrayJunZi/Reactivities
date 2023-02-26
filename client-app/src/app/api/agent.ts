@@ -1,4 +1,5 @@
 import axios, { AxiosError, AxiosResponse } from "axios";
+
 import { toast } from "react-toastify";
 import { Activity } from "../models/activity";
 import { store } from "../stores/store";
@@ -36,9 +37,11 @@ axios.interceptors.response.use(async response => {
             break;
         case 404:
             toast.error('not found');
+
             break;
         case 500:
             store.commonStore.setServerError(data);
+
             break;
     }
     return Promise.reject(error);

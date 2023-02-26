@@ -96,6 +96,17 @@ npm install @types/react-calendar
 
 # 安装 toastify
 npm install react-toastify
+
+# 安装 formik
+npm install formik
+
+# 安装 yup
+npm install yup
+npm install @types/yup --save-dev
+
+# 安装 datepicker
+npm install react-datepicker
+npm install @types/react-datepicker --save-dev
 ```
 
 ## 干净架构
@@ -162,3 +173,7 @@ npm install react-toastify
 - 自定义中间件
 
 - Axios 拦截器
+
+### 第十部分（前端）
+
+- 表单验证
