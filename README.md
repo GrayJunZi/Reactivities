@@ -26,6 +26,9 @@ dotnet tool update --global dotnet-ef --version 7.0.3
 # 迁移数据库
 # API 项目需要先依赖 Microsoft.EntityFrameworkCore.Design 类库
 dotnet ef migrations add InitialCreate -p Persistence -s API
+dotnet ef migrations add IdentityAdded -p Persistence -s API
+
+dotnet ef
 ```
 
 ### 安装 git
@@ -177,3 +180,9 @@ npm install @types/react-datepicker --save-dev
 ### 第十部分（前端）
 
 - 表单验证
+
+### 第十一部分（后端）
+
+- ASPNET Core Identity
+- JWT Token Authentication
+- 登录/注册
