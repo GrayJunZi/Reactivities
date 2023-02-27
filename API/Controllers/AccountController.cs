@@ -50,10 +50,16 @@ public class AccountController : ControllerBase
     public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto)
     {
         if (await _userManager.Users.AnyAsync(x => x.Email.Equals(registerDto.Email)))
-            return BadRequest("Email taken");
+        {
+            ModelState.AddModelError("email", "邮箱重复");
+            return BadRequest(ModelState);
+        }
 
         if (await _userManager.Users.AnyAsync(x => x.UserName.Equals(registerDto.UserName)))
-            return BadRequest("UserName taken");
+        {
+            ModelState.AddModelError("username", "用户名重复");
+            return BadRequest(ModelState);
+        }
 
         var user = new AppUser
         {

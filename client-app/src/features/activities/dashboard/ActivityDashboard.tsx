@@ -16,7 +16,7 @@ export default observer(function ActivityDashboard() {
 
     // 加载中
     if (activityStore.loadingInitial) {
-        return <LoadingConponent content='Loading app' />;
+        return <LoadingConponent content='Loading activities' />;
     }
 
     return (

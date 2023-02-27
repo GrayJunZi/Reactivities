@@ -35,7 +35,6 @@ export default function TestErrors() {
 
     return (
         <>
-            <ToastContainer position="bottom-right" hideProgressBar />
             <Header as='h1' content='Test Error component' />
             <Segment>
                 <Button.Group widths={7}>
