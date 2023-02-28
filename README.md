@@ -27,8 +27,10 @@ dotnet tool update --global dotnet-ef --version 7.0.3
 # API 项目需要先依赖 Microsoft.EntityFrameworkCore.Design 类库
 dotnet ef migrations add InitialCreate -p Persistence -s API
 dotnet ef migrations add IdentityAdded -p Persistence -s API
-
-dotnet ef
+dotnet ef migrations add AdvitityAttendee -p Persistence -s API
+dotnet ef migrations remove -p Persistence -s API
+dotnet ef migrations add AddCancelledProperty -p Persistence -s API
+dotnet ef database update
 ```
 
 ### 安装 git
@@ -190,3 +192,9 @@ npm install @types/react-datepicker --save-dev
 ### 第十二部份（前端）
 
 - 登录/注册
+
+### 第十三部份（后端）
+
+- EF Relationships
+- AutoMapper queryable extensions 
+- 添加基础设施项目

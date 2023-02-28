@@ -1,5 +1,7 @@
 ﻿using Application.Activities;
 using Application.Core;
+using Application.Interfaces;
+using Infrastructure.Security;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
 
@@ -28,6 +30,8 @@ namespace API.Extensions
                 cfg.RegisterServicesFromAssembly(typeof(List).Assembly));
 
             services.AddAutoMapper(typeof(MappingProfiles).Assembly);
+
+            services.AddScoped<IUserAccessor, UserAccessor>();
 
             return services;
         }
