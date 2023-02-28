@@ -31,6 +31,7 @@ dotnet ef migrations add AdvitityAttendee -p Persistence -s API
 dotnet ef migrations remove -p Persistence -s API
 dotnet ef migrations add AddCancelledProperty -p Persistence -s API
 dotnet ef database update
+dotnet ef database drop -p Persistence -s API
 ```
 
 ### °²×° git
