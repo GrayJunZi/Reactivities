@@ -190,12 +190,16 @@ npm install @types/react-datepicker --save-dev
 - JWT Token Authentication
 - 登录/注册
 
-### 第十二部份（前端）
+### 第十二部分（前端）
 
 - 登录/注册
 
-### 第十三部份（后端）
+### 第十三部分（后端）
 
 - EF Relationships
 - AutoMapper queryable extensions 
 - 添加基础设施项目
+
+### 第十四部分（前端）
+
+- 完善与会者功能
