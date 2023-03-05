@@ -1,5 +1,6 @@
 using API.Extensions;
 using API.Middlewares;
+using API.SignalR;
 using Application.Activities;
 using Domain;
 using FluentValidation.AspNetCore;
@@ -53,6 +54,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+app.MapHub<ChatHub>("/chat");
 
 app.Run();
 

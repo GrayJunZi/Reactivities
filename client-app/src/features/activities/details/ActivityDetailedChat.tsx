@@ -1,11 +1,28 @@
+import { useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
-import { Segment, Header } from 'semantic-ui-react';
+import { Segment, Header, Comment, Form, Loader } from 'semantic-ui-react';
+import { useStore } from '../../../app/stores/store';
+import { Link } from 'react-router-dom';
+import { formatDistanceToNow } from 'date-fns';
+import { Field, FieldProps, Formik } from 'formik';
+import * as Yup from 'yup';
 
 interface Props {
     activityId: string;
 }
 
 export default observer(function ActivityDetailedChat({ activityId }: Props) {
+    const { commentStore } = useStore();
+
+    useEffect(() => {
+        if (activityId) {
+            commentStore.createHubConnection(activityId);
+        }
+
+        return () => {
+            commentStore.clearComments();
+        };
+    }, [commentStore, activityId]);
 
     return (
         <>
@@ -19,7 +36,57 @@ export default observer(function ActivityDetailedChat({ activityId }: Props) {
                 <Header>Chat about this event</Header>
             </Segment>
             <Segment attached clearing>
+                <Formik
+                    onSubmit={(values, { resetForm }) => commentStore.addComment(values).then(() => resetForm())}
+                    initialValues={{ body: '' }}
+                    validationSchema={Yup.object({
+                        body: Yup.string().required()
+                    })}
+                >
+                    {({ handleSubmit, isSubmitting, isValid }) => (
+                        <Form className='ui form' >
+                            <Field name='body'>
+                                {(props: FieldProps) => (
+                                    <div style={{ position: 'relative' }}>
+                                        <Loader active={isSubmitting} />
+                                        <textarea
+                                            rows={2}
+                                            placeholder='Enter your comment (Enter to submit, SHIFT + ENTER for new line)'
+                                            {...props.field}
+                                            onKeyPress={e => {
+                                                if (e.key === 'Enter' && e.shiftKey) {
+                                                    return;
+                                                }
 
+                                                if (e.key === 'Enter' && !e.shiftKey) {
+                                                    e.preventDefault();
+                                                    isValid && handleSubmit();
+                                                }
+                                            }}
+                                        />
+                                    </div>
+                                )}
+                            </Field>
+                        </Form>
+                    )}
+                </Formik>
+
+                <Comment.Group>
+                    {commentStore.comments.map(comment => (
+                        <Comment key={comment.id}>
+                            <Comment.Avatar src={comment.image || '/assets/user.png'} />
+                            <Comment.Content>
+                                <Comment.Author as={Link} to={`/profiles/${comment.userName}`}>
+                                    {comment.displayName}
+                                </Comment.Author>
+                                <Comment.Metadata>
+                                    {formatDistanceToNow(comment.createdAt)}
+                                </Comment.Metadata>
+                                <Comment.Text style={{ whiteSpace: 'pre-wrap' }}>{comment.body}</Comment.Text>
+                            </Comment.Content>
+                        </Comment>
+                    ))}
+                </Comment.Group>
             </Segment>
         </>
 

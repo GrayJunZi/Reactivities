@@ -33,6 +33,7 @@ dotnet ef migrations add AddCancelledProperty -p Persistence -s API
 dotnet ef database update
 dotnet ef database drop -p Persistence -s API
 dotnet ef migrations add PhotoEntityAdded -p Persistence -s API
+dotnet ef migrations add CommentEntityAdded -p Persistence -s API
 ```
 
 ### 安装 git
@@ -118,8 +119,11 @@ npm install @types/react-datepicker --save-dev
 # 安装 dropzone
 npm install --save react-dropzone
 
-安装 cropper
+# 安装 cropper
 npm install --save react-cropper
+
+# 安装 signalr
+npm install @microsoft/signalr
 ```
 
 ## 干净架构
@@ -215,3 +219,7 @@ npm install --save react-cropper
 
 - 图片上传（Cloudinary）
 - React Dropzone
+
+### 第十六部分（后端）
+
+- SignalR
