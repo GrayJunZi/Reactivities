@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Formats.Asn1;
 using System.Security.Claims;
 
 namespace API.Controllers;
@@ -33,7 +32,8 @@ public class AccountController : ControllerBase
     [HttpPost("login")]
     public async Task<ActionResult<UserDto>> Login(LoginDto loginDto)
     {
-        var user = await _userManager.FindByEmailAsync(loginDto.Email);
+        var user = await _userManager.Users.Include(x => x.Photos)
+            .FirstOrDefaultAsync(x => x.Email == loginDto.Email);
         if (user == null)
             return Unauthorized();
 
@@ -81,7 +81,8 @@ public class AccountController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<UserDto>> GetCurrentUser()
     {
-        var user = await _userManager.FindByEmailAsync(User.FindFirstValue(ClaimTypes.Email));
+        var user = await _userManager.Users.Include(x => x.Photos)
+            .FirstOrDefaultAsync(x => x.Email == User.FindFirstValue(ClaimTypes.Email));
         return CreateUserObject(user);
     }
 
@@ -92,7 +93,7 @@ public class AccountController : ControllerBase
             DisplayName = user.DisplayName,
             Token = _tokenService.CreateToken(user),
             UserName = user.UserName,
-            Image = null,
+            Image = user?.Photos?.FirstOrDefault(x => x.IsMain)?.Url,
         };
     }
 }

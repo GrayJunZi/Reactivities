@@ -15,6 +15,7 @@ import { ToastContainer } from 'react-toastify';
 import { useStore } from '../stores/store';
 import LoadingConponent from './LoadingComponent';
 import ModalContainer from '../common/modals/ModalContainer';
+import ProfilePage from '../../features/profiles/ProfilePage';
 
 function App() {
   const location = useLocation();
@@ -46,6 +47,7 @@ function App() {
           <Route path='/errors' element={<TestErrors />} />
           <Route path='/server-error' element={<ServerError />} />
           <Route path='/login' element={<LoginForm />} />
+          <Route path='/profiles/:username' element={<ProfilePage />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
       </Container>

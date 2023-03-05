@@ -32,6 +32,7 @@ dotnet ef migrations remove -p Persistence -s API
 dotnet ef migrations add AddCancelledProperty -p Persistence -s API
 dotnet ef database update
 dotnet ef database drop -p Persistence -s API
+dotnet ef migrations add PhotoEntityAdded -p Persistence -s API
 ```
 
 ### 安装 git
@@ -113,6 +114,12 @@ npm install @types/yup --save-dev
 # 安装 datepicker
 npm install react-datepicker
 npm install @types/react-datepicker --save-dev
+
+# 安装 dropzone
+npm install --save react-dropzone
+
+安装 cropper
+npm install --save react-cropper
 ```
 
 ## 干净架构
@@ -203,3 +210,8 @@ npm install @types/react-datepicker --save-dev
 ### 第十四部分（前端）
 
 - 完善与会者功能
+
+### 第十五部分（后端/前端）
+
+- 图片上传（Cloudinary）
+- React Dropzone
