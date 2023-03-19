@@ -6,7 +6,6 @@ using FluentValidation;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
-using System.Security.Cryptography.X509Certificates;
 
 namespace Application.Comments
 {
@@ -61,7 +60,7 @@ namespace Application.Comments
 
                 activity.Comments.Add(comment);
 
-                var success = await _context.SaveChangesAsync(cancellationToken) > 0;
+                var success = await _context.SaveChangesAsync() > 0;
                 if (!success)
                     return Result<CommentDto>.Failure("Failed to add comment");
 

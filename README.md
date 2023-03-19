@@ -34,6 +34,7 @@ dotnet ef database update
 dotnet ef database drop -p Persistence -s API
 dotnet ef migrations add PhotoEntityAdded -p Persistence -s API
 dotnet ef migrations add CommentEntityAdded -p Persistence -s API
+dotnet ef migrations add FollowingEntityAdded -p Persistence -s API
 ```
 
 ### 安装 git
@@ -223,3 +224,7 @@ npm install @microsoft/signalr
 ### 第十六部分（后端）
 
 - SignalR
+
+### 第十七部分（后端/前端）
+
+- 关注与被关注功能

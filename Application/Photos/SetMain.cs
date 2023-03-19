@@ -42,7 +42,7 @@ namespace Application.Photos
 
                 photo.IsMain = currentMain == null;
 
-                var success = await _context.SaveChangesAsync(cancellationToken) > 0;
+                var success = await _context.SaveChangesAsync() > 0;
                 if (!success)
                     return Result<Unit>.Failure("Problem setting main photo");
 
