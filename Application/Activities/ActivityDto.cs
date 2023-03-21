@@ -1,4 +1,5 @@
-﻿using Application.Profiles;
+﻿using Application.Core;
+using Application.Profiles;
 
 namespace Application.Activities
 {
@@ -14,5 +15,12 @@ namespace Application.Activities
         public string HostUserName { get; set; }
         public bool IsCancelled { get; set; }
         public ICollection<AttendeeDto> Attendees { get; set; }
+    }
+
+    public class ActivityParams : PagingParams
+    {
+        public bool IsGoing { get; set; }
+    public bool IsHost { get; set; }
+        public DateTime StartDate { get; set; } = DateTime.UtcNow;
     }
 }

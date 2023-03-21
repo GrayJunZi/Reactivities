@@ -125,6 +125,10 @@ npm install --save react-cropper
 
 # 安装 signalr
 npm install @microsoft/signalr
+
+# 安装 scroller
+npm install react-infinite-scroller --legacy-peer-deps
+npm install @types/react-infinite-scroller
 ```
 
 ## 干净架构
@@ -228,3 +232,7 @@ npm install @microsoft/signalr
 ### 第十七部分（后端/前端）
 
 - 关注与被关注功能
+
+### 第十八部分（后端/前端）
+
+- 分页、排序、筛选
