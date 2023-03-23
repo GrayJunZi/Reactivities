@@ -248,6 +248,5 @@ docker run --name dev -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=admin -p 5432:
 
 ### 第十九部分（前端）
 
-- 前端路由保护
-- 构建项目
+- 构建前端项目
 - 切换为 PostgreSQL 数据库
