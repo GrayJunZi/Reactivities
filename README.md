@@ -35,6 +35,7 @@ dotnet ef database drop -p Persistence -s API
 dotnet ef migrations add PhotoEntityAdded -p Persistence -s API
 dotnet ef migrations add CommentEntityAdded -p Persistence -s API
 dotnet ef migrations add FollowingEntityAdded -p Persistence -s API
+dotnet ef migrations add PGInitial -p Persistence -s API
 ```
 
 ### 安装 git
@@ -129,6 +130,14 @@ npm install @microsoft/signalr
 # 安装 scroller
 npm install react-infinite-scroller --legacy-peer-deps
 npm install @types/react-infinite-scroller
+```
+
+## Docker
+
+### 创建 PostgreSQL 数据库
+
+```shell
+docker run --name dev -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=admin -p 5432:5432 -d postgres:latest
 ```
 
 ## 干净架构
@@ -236,3 +245,9 @@ npm install @types/react-infinite-scroller
 ### 第十八部分（后端/前端）
 
 - 分页、排序、筛选
+
+### 第十九部分（前端）
+
+- 前端路由保护
+- 构建项目
+- 切换为 PostgreSQL 数据库
