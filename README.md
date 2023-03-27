@@ -36,6 +36,7 @@ dotnet ef migrations add PhotoEntityAdded -p Persistence -s API
 dotnet ef migrations add CommentEntityAdded -p Persistence -s API
 dotnet ef migrations add FollowingEntityAdded -p Persistence -s API
 dotnet ef migrations add PGInitial -p Persistence -s API
+dotnet ef migrations add RefreshTokens -p Persistence -s API
 ```
 
 ### 安装 git
@@ -250,3 +251,9 @@ docker run --name dev -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=admin -p 5432:
 
 - 构建前端项目
 - 切换为 PostgreSQL 数据库
+
+### 第二十部分（后端）
+
+- Github 登录
+- Refresh Tokens
+- SendGrid

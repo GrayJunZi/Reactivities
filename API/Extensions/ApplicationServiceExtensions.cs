@@ -1,6 +1,7 @@
 ﻿using Application.Activities;
 using Application.Core;
 using Application.Interfaces;
+using Infrastructure.Email;
 using Infrastructure.Photos;
 using Infrastructure.Security;
 using Microsoft.EntityFrameworkCore;
@@ -25,6 +26,7 @@ namespace API.Extensions
                     policy.AllowAnyMethod()
                         .AllowAnyHeader()
                         .AllowCredentials()
+                        .WithExposedHeaders("WWW-Authenticate", "Pagination")
                         .WithOrigins("http://localhost:3000");
                 });
             });
@@ -33,6 +35,8 @@ namespace API.Extensions
                 cfg.RegisterServicesFromAssembly(typeof(List).Assembly));
 
             services.AddAutoMapper(typeof(MappingProfiles).Assembly);
+
+            services.AddScoped<EmailSender>();
 
             services.AddScoped<IUserAccessor, UserAccessor>();
             services.AddScoped<IPhotoAccessor, PhotoAccessor>();
